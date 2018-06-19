@@ -8,7 +8,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="vimrc ~/.i3/config"    # list of files/folders to symlink in homedir
+files="vimrc i3/config"    # list of files/folders to symlink in homedir
 
 ##########
 
@@ -27,5 +27,21 @@ for file in $files; do
     echo "Moving any existing dotfiles from ~ to $olddir"
     mv ~/.$file ~/dotfiles_old/
     echo "Creating symlink to $file in home directory."
-    ln -s $dir/$file ~/.$file
+	if [ $file == "i3/config" ]
+	then
+		ln -s $dir/config ~/.$file
+	else
+    		ln -s $dir/.$file ~/.$file
+	fi
 done
+
+#
+## creating own code
+#
+## move existing files to $olddir
+#echo "Moving any existing dotfiles from ~ to $olddir"
+#
+## vimrc
+#mv ~/.$file ~/dotfiles_old/
+#
+## i3/config

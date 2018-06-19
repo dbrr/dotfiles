@@ -1,6 +1,6 @@
 
 " Pathogen Plugin
-"execute pathogen#infect()
+execute pathogen#infect()
 
 set tabstop=4
 
