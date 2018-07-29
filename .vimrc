@@ -2,9 +2,15 @@
 " Pathogen Plugin
 execute pathogen#infect()
 
-set tabstop=4
+" vimWIKI
 
+" Powerline
+set rtp+=~/.local/lib/python3.6/site-packages/powerline/bindings/vim
+
+" Setup
+set tabstop=4			" Tabs stop at 4*<space>
 filetype plugin on
+filetype plugin indent on
 syntax on
 set number
 set relativenumber
@@ -14,13 +20,16 @@ set showmatch
 set lazyredraw
 set ruler
 
+set laststatus=2
+
 set incsearch
 set hlsearch
+hi clear SpellBad
+hi SpellBad cterm=underline 
 
-" indent follows line above
-set autoindent
-" indenting for c stuff
-set smartindent
+set autoindent	" indent follows line above
+set smartindent	" indenting for c stuff
+
 
 " KEY MAPPINGS:
 map <F3> :set ignorecase! <CR>
@@ -30,7 +39,12 @@ map <F6> :setlocal spell! spelllang=en_us <CR>
 
 map <C-n> :NERDTreeToggle<CR>
 
+" Leaders
 let mapleader=","
+
+command! -nargs=1 Ngrep vimgrep "<args>" ~/vimmd/*.md
+nnoremap <leader>[ :Ngrep
+" Can use :copen to view windowed list
 
 map <leader>tn :tabnew<CR>
 map <leader>tw :tabnext<CR>
@@ -47,8 +61,8 @@ command! MakeTags !ctags -R
 
 
 " HTML Binds:
-" <leader> <leader> to jump to next <++>
-autocmd FileType html inoremap <leader><leader> <Esc>/<++><Enter>"_c4l
+" <space> <space> to jump to next <++>
+autocmd FileType html inoremap <space><space> <Esc>/<++><Enter>"_c4l
 
 " h1 
 autocmd FileType html inoremap ;1 <h1></h1><Space><++><Esc>FhT>i
@@ -64,4 +78,14 @@ autocmd FileType html inoremap ;p <p></p><Enter><++><Esc>2k$FpT>i
 autocmd FileType html inoremap ;e <em></em><Space><++><Esc>FeT>i
 
 
+" PANDOC:
+" even though this doesn't work i refer to this to remember how to convert.
+"autocmd FileType md noremap <leader>bb :pandoc %:t --pdf-engine=xelatex -o %
+
+" LaTeX Binds: 
+
+" compile bind
+autocmd FileType tex  noremap <leader>;; :!pdflatex %<CR>
+
+autocmd FileType tex  inoremap <space><space> <Esc>/<++><Enter>"_c4l
 
