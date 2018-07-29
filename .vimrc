@@ -9,6 +9,8 @@ set rtp+=~/.local/lib/python3.6/site-packages/powerline/bindings/vim
 
 " Setup
 set tabstop=4			" Tabs stop at 4*<space>
+set softtabstop=0 noexpandtab
+set shiftwidth=4
 filetype plugin on
 filetype plugin indent on
 syntax on
