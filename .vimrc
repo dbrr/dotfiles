@@ -5,7 +5,13 @@ execute pathogen#infect()
 " vimWIKI
 
 " Powerline
-set rtp+=~/.local/lib/python3.6/site-packages/powerline/bindings/vim
+" If installed from pip:
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
+
+" Use this line if cloning from Git Hub:
+"set rtp+=~/.local/lib/python3.6/site-packages/powerline/bindings/vim
 
 " Setup
 set tabstop=4			" Tabs stop at 4*<space>
