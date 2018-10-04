@@ -86,11 +86,11 @@ autocmd FileType html inoremap ;p <p></p><Enter><++><Esc>2k$FpT>i
 autocmd FileType html inoremap ;e <em></em><Space><++><Esc>FeT>i
 
 
-" PANDOC:
+"PANDOC:
 " even though this doesn't work i refer to this to remember how to convert.
 "autocmd FileType md noremap <leader>bb :pandoc %:t --pdf-engine=xelatex -o %
 
-" LaTeX Binds: 
+"LaTeX Binds: 
 
 " compile bind
 autocmd FileType tex  noremap <leader>;; :!pdflatex %<CR>
